@@ -642,3 +642,144 @@ input:focus, textarea:focus {
         height: 250px;
     }
 }
+/* Education Cards as Links */
+.education-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.education-card-link:hover {
+    transform: translateY(-5px);
+}
+
+.education-card-link:hover .education-card {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border: 2px solid #2563eb;
+}
+
+.click-hint {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #2563eb;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.click-hint i {
+    font-size: 14px;
+}
+
+/* Add a little indicator that cards are clickable */
+.education-card {
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.education-card::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 0;
+    border-color: transparent #2563eb transparent transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.education-card-link:hover .education-card::after {
+    opacity: 0.3;
+}
+
+/* Other Certifications Section */
+.other-certifications {
+    margin-top: 60px;
+    padding: 30px;
+    background: #f8fafc;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.subsection-title {
+    font-size: 24px;
+    color: #1e3c72;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.subsection-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #2563eb;
+    border-radius: 2px;
+}
+
+.cert-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cert-badge {
+    background: white;
+    color: #2563eb;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #2563eb;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(37,99,235,0.1);
+}
+
+.cert-badge:hover {
+    background: #2563eb;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37,99,235,0.3);
+}
+
+.cert-note {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.cert-note i {
+    color: #2563eb;
+    margin-right: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .other-certifications {
+        padding: 20px;
+        margin-top: 40px;
+    }
+    
+    .cert-badge {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .subsection-title {
+        font-size: 20px;
+    }
+}
