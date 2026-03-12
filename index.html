@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <!-- Your photo - using the renamed version without spaces -->
+                <!-- Your photo - update filename if needed -->
                 <img src="BIRUK SISAY ABATE 33.JPG" alt="Biruk Sisay Abate" class="profile-photo">
             </div>
         </div>
@@ -356,7 +356,7 @@
         </div>
     </section>
 
-    <!-- Education & Certifications Section (UPDATED) -->
+    <!-- Education & Certifications Section -->
     <section id="education" class="education">
         <div class="container">
             <h2 class="section-title">Education & Certifications</h2>
@@ -409,7 +409,7 @@
                 </a>
             </div>
 
-            <!-- NEW: Other Certifications Section -->
+            <!-- Other Certifications Section -->
             <div class="other-certifications">
                 <h3 class="subsection-title">Other Certifications & Trainings</h3>
                 <div class="cert-badges">
@@ -428,7 +428,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section with Working Web3Forms -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
@@ -445,15 +445,30 @@
                     </div>
                 </div>
                 
-                <!-- Simple Contact Form -->
+                <!-- Working Contact Form with Web3Forms -->
                 <div class="contact-box">
                     <h3>Send a message</h3>
-                    <form id="contactForm">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea rows="4" placeholder="Your Message" required></textarea>
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                        
+                        <!-- Your Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="d44749f4-e6ee-4871-9230-02b3cccfb1cd">
+                        
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" style="display: none;">
+                        
+                        <!-- Form Fields -->
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                        
+                        <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
+                    
+                    <!-- Success Message (hidden by default) -->
+                    <div id="form-success" style="display: none; text-align: center; margin-top: 20px; padding: 15px; background: #d4edda; color: #155724; border-radius: 5px;">
+                        <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
+                    </div>
                 </div>
             </div>
         </div>

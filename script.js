@@ -48,3 +48,60 @@ document.addEventListener('DOMContentLoaded', function() {
         footer.innerHTML = footer.innerHTML.replace('2025', new Date().getFullYear());
     }
 });
+// Web3Forms Contact Form Handler
+const contactForm = document.getElementById('contactForm');
+const successDiv = document.getElementById('form-success');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Show sending state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Prepare form data
+        const formData = new FormData(this);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+        
+        try {
+            // Send to Web3Forms
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            });
+            
+            const result = await response.json();
+            
+            if (response.status === 200) {
+                // Success - hide form, show success message
+                this.style.display = 'none';
+                successDiv.style.display = 'block';
+                
+                // Reset form after 5 seconds
+                setTimeout(() => {
+                    this.style.display = 'block';
+                    successDiv.style.display = 'none';
+                    this.reset();
+                }, 5000);
+            } else {
+                alert('Something went wrong. Please try again or email me directly.');
+                console.log(result);
+            }
+        } catch (error) {
+            alert('Network error. Please try again.');
+            console.error(error);
+        } finally {
+            // Restore button
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+}
